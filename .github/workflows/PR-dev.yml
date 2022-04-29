@@ -3,12 +3,27 @@ name: Run tests on Pull Request
 on:
   pull_request:
     branches: [dev]
+    paths:
+      - "packages/server-api/**"
 
 jobs:
   verify:
     name: Verify
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./packages/server-api
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-# TODO
+      - name: Checkout
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: lint
+        run: npm run lint
+      - name: build
+        run: npm run build
