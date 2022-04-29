@@ -1,0 +1,8 @@
+node_modules
+.DS_Store
+
+.favorites.json
+
+lerna-debug.log
+coverage
+.info 
