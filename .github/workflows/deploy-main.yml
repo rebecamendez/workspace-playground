@@ -1,4 +1,4 @@
-name: 'Deploy: PRO'
+name: 'Deploy: PROD'
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    environment: PRO
+    environment: PROD
 
     steps:
       - name: Checkout
