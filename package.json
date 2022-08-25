@@ -2,7 +2,9 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "postinstall": "lerna bootstrap"
+    "postinstall": "lerna bootstrap",
+    "build": "cd packages/server-nest-api && npm run build", 
+    "start": "cd packages/server-nest-api && npm run start"
   },
   "devDependencies": {
     "lerna": "^4.0.0"
