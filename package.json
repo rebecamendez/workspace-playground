@@ -8,6 +8,7 @@
     "lerna": "^4.0.0"
   },
   "workspaces": [
-    "packages/server-api"
+    "packages/server-api",
+    "packages/server-nest-api"
   ]
 }
