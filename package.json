@@ -4,7 +4,7 @@
   "scripts": {
     "postinstall": "lerna bootstrap",
     "build": "cd packages/server-nest-api && npm run build", 
-    "start": "cd packages/server-nest-api && npm run start"
+    "start": "cd packages/server-nest-api && npm install && npm run start"
   },
   "devDependencies": {
     "lerna": "^4.0.0"
