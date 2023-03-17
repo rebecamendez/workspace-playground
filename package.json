@@ -2,7 +2,8 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "postinstall": "lerna bootstrap"
+    "install:ci": "yarn install --immutable --immutable-cache --no-progres --check-cache --verbose",
+    "check-cache": "dir=$(yarn cache dir) && du $dir -h -d 1 && du -h -d 1 packages"
   },
   "devDependencies": {
     "lerna": "^4.0.0"
