@@ -1,10 +1,10 @@
-name: 'Deploy: PROD'
+name: "Deploy: PROD"
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    
+  release:
+    types: [published]
+
 jobs:
   deploy:
     name: Deploy
@@ -13,6 +13,5 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 # TODO
-        
