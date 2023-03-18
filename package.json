@@ -2,9 +2,10 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "postinstall": "lerna bootstrap",
+    "install:ci": "yarn install --immutable --immutable-cache --no-progres --check-cache --verbose",
     "build": "cd packages/server-nest-api && npm run build", 
-    "start": "cd packages/server-nest-api && npm install && npm run start"
+    "start": "cd packages/server-nest-api && npm install && npm run start",
+    "check-cache": "dir=$(yarn cache dir) && du $dir -h -d 1 && du -h -d 1 packages"
   },
   "devDependencies": {
     "lerna": "^4.0.0"
