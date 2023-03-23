@@ -1,0 +1,23 @@
+name: "PR verify - PR Title Checker"
+on:
+  pull_request:
+    branches: [main]
+    types:
+      - opened
+      - edited
+      - synchronize
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  PR-title-verify:
+    name: PR title verify
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify
+        uses: Slashgear/action-check-pr-title@v4.3.0
+        with:
+          regexp: '(feat|fix|docs|build|chore|ci|style|refactor|perf|test)(\(.+\))*: .+ \(((WP-\d+ (#IN_PROGRESS|#DONE))|NOJIRA)\)'
+          helpMessage: 'Ex. "feat(server-api): my changes description (WP-2 #DONE)" OR "feat(server-api): my changes description (NOJIRA)"'
