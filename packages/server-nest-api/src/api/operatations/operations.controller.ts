@@ -13,4 +13,9 @@ export class OperationsController {
     const message = await this.operationsService.getSlowOperation(time);
     return message;
   }
+
+  @Get('throw-server-error')
+  async getThrowServerError(): Promise<void> {
+    await this.operationsService.getThrowServerError();
+  }
 }

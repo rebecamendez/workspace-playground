@@ -9,6 +9,10 @@ export class OperationsService {
     return { message: `Slow operation finished after ${sleepTimeSeconds} seconds` };
   }
 
+  async getThrowServerError(): Promise<void> {
+    throw Error('Intentionally Server Error');
+  }
+
   private async sleep(ms): Promise<void> {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
