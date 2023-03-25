@@ -3,15 +3,15 @@
   "private": true,
   "scripts": {
     "install:ci": "yarn install --immutable --immutable-cache --no-progres --check-cache --verbose",
-    "build": "cd packages/server-nest-api && npm run build", 
+    "build": "cd packages/server-nest-api && npm run build",
     "start": "cd packages/server-nest-api && npm install && npm run start",
     "check-cache": "dir=$(yarn cache dir) && du $dir -h -d 1 && du -h -d 1 packages"
   },
   "devDependencies": {
-    "lerna": "^4.0.0"
+    "lerna": "^6.6.1"
   },
   "workspaces": [
-    "packages/server-api",
+    "packages/server-legacy-api",
     "packages/server-nest-api"
   ]
 }
