@@ -6,3 +6,5 @@ node_modules
 lerna-debug.log
 coverage
 .info 
+dist/
+output.txt
