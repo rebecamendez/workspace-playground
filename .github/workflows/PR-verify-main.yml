@@ -1,4 +1,4 @@
-name: "PR verify - build, lint and test"
+name: "# PR verify - build, lint and test"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
