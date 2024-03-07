@@ -2,15 +2,10 @@ name: PR main - automerge
 on:
   pull_request:
     branches: [main]
-  pull_request_review:
-    types:
-      - submitted
-  check_suite:
-    types:
-      - completed
-  status: {}
+    types: [labeled]
 jobs:
   automerge:
+    if: ${{ github.event.label.name == 'automerge' }}
     runs-on: ubuntu-latest
     steps:
       - id: automerge
