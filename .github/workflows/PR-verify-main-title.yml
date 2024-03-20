@@ -19,5 +19,5 @@ jobs:
       - name: Verify
         uses: Slashgear/action-check-pr-title@v4.3.0
         with:
-          regexp: '(feat|fix|docs|build|chore|ci|style|refactor|perf|test)(\(.+\))*: .+ \(((WP-\d+ (#IN_PROGRESS|#DONE))|NOJIRA)\)'
-          helpMessage: 'Ex. "feat(server-api): my changes description (WP-2 #DONE)" OR "feat(server-api): my changes description (NOJIRA)"'
+          regexp: '(feat|fix|docs|build|chore|ci|style|refactor|perf|test)(\(.+\))*: .+ \(((complete|part of) (MAN-\d+)|noticket)'
+          helpMessage: 'Ex. "feat(server-api): my changes description (complete MAN-123)" OR "feat(server-api): my changes description (noticket)"'
