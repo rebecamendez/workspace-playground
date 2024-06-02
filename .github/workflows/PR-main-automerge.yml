@@ -3,6 +3,12 @@ on:
   pull_request:
     branches: [main]
     types: [labeled, synchronize, opened, reopened]
+  pull_request_review:
+    types:
+      - submitted
+  check_suite:
+    types:
+      - completed
 jobs:
   automerge:
     if: ${{ github.event.label.name == 'automerge' }}
