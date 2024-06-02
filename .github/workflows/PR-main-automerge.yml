@@ -1,20 +1,32 @@
 name: PR main - automerge
 on:
   pull_request:
-    branches: [main]
-    types: [labeled, synchronize, opened, reopened]
+    types:
+      - labeled
+      - unlabeled
+      - synchronize
+      - opened
+      - edited
+      - ready_for_review
+      - reopened
+      - unlocked
+  pull_request_review:
+    types:
+      - submitted
   check_suite:
-    types: [completed]
-  status:
-    types: [success]
+    types:
+      - completed
+  status: {}
 jobs:
   automerge:
-    if: ${{ github.event.label.name == 'automerge' }} && github.event.check_suite.conclusion == 'success' || github.event.status.state == 'success'
+    if: ${{ github.event.label.name == 'automerge' }}
     runs-on: ubuntu-latest
     steps:
       - id: automerge
         name: automerge
         uses: "pascalgn/automerge-action@v0.16.3"
+        permissions:
+          contents: write
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           MERGE_LABELS: "automerge"
