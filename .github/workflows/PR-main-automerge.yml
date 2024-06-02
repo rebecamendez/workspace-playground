@@ -3,15 +3,13 @@ on:
   pull_request:
     branches: [main]
     types: [labeled, synchronize, opened, reopened]
-  pull_request_review:
-    types:
-      - submitted
   check_suite:
-    types:
-      - completed
+    types: [completed]
+  status:
+    types: [success]
 jobs:
   automerge:
-    if: ${{ github.event.label.name == 'automerge' }}
+    if: ${{ github.event.label.name == 'automerge' }} && github.event.check_suite.conclusion == 'success' || github.event.status.state == 'success'
     runs-on: ubuntu-latest
     steps:
       - id: automerge
