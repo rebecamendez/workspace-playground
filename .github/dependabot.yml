@@ -1,11 +1,11 @@
 version: 2
 updates:
-  - package-ecosystem: "all"
+  - package-ecosystem: "yarn"
     directory: "/"
     schedule:
       interval: "daily"
     commit-message:
-      prefix: "fix"
+      prefix: "deps:"
     allow:
       - dependency-name: "*"
         severity: "low"
