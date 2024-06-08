@@ -1,0 +1,18 @@
+version: 2
+updates:
+  - package-ecosystem: "all"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    commit-message:
+      prefix: "fix"
+    allow:
+      - dependency-name: "*"
+        severity: "low"
+      - dependency-name: "*"
+        severity: "moderate"
+      - dependency-name: "*"
+        severity: "high"
+    ignore:
+      - dependency-name: "*"
+        severity: "none"
