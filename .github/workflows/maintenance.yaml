@@ -28,10 +28,10 @@ jobs:
           - uses: actions/checkout@v3
           - name: install dependencies
             run: yarn install
-          - uses: basaldev/yarn-npm-audit-action@v2
+          - uses: basaldev/yarn-npm-audit-action@v2.0.0
             with:
               severity_level: critical
-              github_token: ${{ secrets.MY_GITHUB_ACCESS_TOKEN }}
+              github_token: ${{ secrets.GITHUB_TOKEN }}
               issue_labels: vulnerability, weekly
               create_issues: true
               dedupe_issues: true
