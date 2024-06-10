@@ -1,0 +1,37 @@
+# .github/workflows/stale-branches.yml
+
+name: Repository Maintenance Tasks
+
+on:
+  schedule:
+    - cron: '0 7 * * 1' # Every Monday at 7am
+  workflow_dispatch:
+    
+jobs:
+    remove-stale-branches:
+        name: Remove Stale Branches
+        runs-on: ubuntu-latest
+        steps:
+          - uses: fpicalausa/remove-stale-branches@v1
+            with:
+              github-token	: ${{ secrets.GITHUB_TOKEN }}
+              dry-run: false # true to only simulate the action
+              exempt-branches-regex: ^NO_DELETE
+              days-before-branch-stale: 60
+              days-before-branch-delete: 5
+              operations-per-run: 200
+
+    review-vulnerabilities:
+        name: Review Vulnerabilities
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v3
+          - name: install dependencies
+            run: yarn install
+          - uses: basaldev/yarn-npm-audit-action@v2
+            with:
+              severity_level: critical
+              github_token: ${{ secrets.MY_GITHUB_ACCESS_TOKEN }}
+              issue_labels: vulnerability, weekly
+              create_issues: true
+              dedupe_issues: true
